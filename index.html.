@@ -1,15 +1,576 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi primer sitio</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pesca de Arrastre</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #001f3f, #004e6e, #007f8b);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ENCABEZADO */
+        header {
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background:
+                linear-gradient(rgba(0, 25, 50, 0.65), rgba(0, 90, 110, 0.7)),
+                url("https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        header h1 {
+            font-size: 60px;
+            text-shadow: 3px 3px 10px #000;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 22px;
+            max-width: 750px;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        /* MENÚ */
+        nav {
+            background: rgba(0, 20, 40, 0.95);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #55e6ff;
+        }
+
+        /* CONTENIDO */
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        .section {
+            background: rgba(0, 25, 50, 0.65);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            backdrop-filter: blur(5px);
+        }
+
+        .section h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #7eeeff;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* FOTOS */
+        .photo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .photo-box {
+            background: rgba(0,0,0,0.25);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-caption {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* BOTONES */
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #36c9df;
+            color: #002333;
+        }
+
+        button:hover {
+            background: #7eeeff;
+        }
+
+        .edit-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 100;
+            background: #00d4ff;
+            font-size: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        /* MODO EDICIÓN */
+        [contenteditable="true"] {
+            outline: 2px dashed #7eeeff;
+            outline-offset: 5px;
+        }
+
+        .editing {
+            border: 2px dashed #7eeeff;
+        }
+
+        .edit-tools {
+            display: none;
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editing .edit-tools {
+            display: block;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* PIE */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 15, 30, 0.9);
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 40px;
+            }
+
+            header p {
+                font-size: 18px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<h1>¡Hola, mundo!</h1>
-<p>Este es mi primer sitio publicado con GitHub Pages.</p>
-<button onclick="cambiarColor()">Cambiar color</button>
-<script src="script.js"></script>
+
+    <!-- ENCABEZADO -->
+    <header id="inicio">
+
+        <h1 contenteditable="false">
+            Pesca de Arrastre
+        </h1>
+
+        <p contenteditable="false">
+            Conociendo una de las técnicas de pesca que más impacto puede generar en los ecosistemas marinos.
+        </p>
+
+    </header>
+
+    <!-- MENÚ -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#galeria">Galería</a>
+    </nav>
+
+
+    <main>
+
+        <!-- SECCIÓN 1 -->
+        <section class="section editable-section" id="que-es">
+
+            <h2 contenteditable="false">
+                ¿Qué es la pesca de arrastre?
+            </h2>
+
+            <p contenteditable="false">
+                La pesca de arrastre es una técnica utilizada para capturar organismos marinos mediante una red que es arrastrada por una embarcación a través del agua.
+            </p>
+
+            <p contenteditable="false">
+                Dependiendo del tipo de pesca, la red puede desplazarse cerca del fondo marino o a diferentes profundidades.
+            </p>
+
+            <div class="edit-tools">
+
+                <button onclick="agregarFoto(this)">
+                    📷 Agregar foto
+                </button>
+
+                <button onclick="eliminarSeccion(this)">
+                    🗑️ Eliminar sección
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECCIÓN 2 -->
+        <section class="section editable-section" id="impacto">
+
+            <h2 contenteditable="false">
+                Impacto en el océano
+            </h2>
+
+            <p contenteditable="false">
+                Uno de los principales problemas asociados a determinados tipos de pesca de arrastre es que las redes pueden entrar en contacto con el fondo marino y afectar diferentes organismos y hábitats.
+            </p>
+
+            <p contenteditable="false">
+                También puede producirse captura incidental de especies que no eran el objetivo principal de la pesca.
+            </p>
+
+            <div class="edit-tools">
+
+                <button onclick="agregarFoto(this)">
+                    📷 Agregar foto
+                </button>
+
+                <button onclick="eliminarSeccion(this)">
+                    🗑️ Eliminar sección
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECCIÓN 3 -->
+        <section class="section editable-section" id="galeria">
+
+            <h2 contenteditable="false">
+                Galería
+            </h2>
+
+            <div class="photo-container">
+
+                <div class="photo-box">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+                        alt="Océano"
+                    >
+
+                    <div class="photo-caption" contenteditable="false">
+                        Ecosistema marino
+                    </div>
+
+                </div>
+
+                <div class="photo-box">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80"
+                        alt="Mar"
+                    >
+
+                    <div class="photo-caption" contenteditable="false">
+                        El océano
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="edit-tools">
+
+                <button onclick="agregarFoto(this)">
+                    📷 Agregar foto
+                </button>
+
+                <button onclick="eliminarSeccion(this)">
+                    🗑️ Eliminar sección
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BOTÓN DE EDICIÓN -->
+    <button class="edit-button" onclick="activarEdicion()">
+        ✏️ Modo edición
+    </button>
+
+
+    <footer>
+
+        <p>
+            Proyecto educativo sobre la pesca de arrastre 🌊
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        let modoEdicion = false;
+
+
+        /* ACTIVAR / DESACTIVAR EDICIÓN */
+
+        function activarEdicion() {
+
+            modoEdicion = !modoEdicion;
+
+            const elementos = document.querySelectorAll("[contenteditable]");
+
+            elementos.forEach(elemento => {
+
+                elemento.contentEditable = modoEdicion;
+
+            });
+
+
+            const secciones = document.querySelectorAll(".editable-section");
+
+            secciones.forEach(seccion => {
+
+                if (modoEdicion) {
+                    seccion.classList.add("editing");
+                } else {
+                    seccion.classList.remove("editing");
+                }
+
+            });
+
+
+            const boton = document.querySelector(".edit-button");
+
+            if (modoEdicion) {
+
+                boton.innerHTML = "💾 Guardar cambios";
+
+            } else {
+
+                guardarPagina();
+
+                boton.innerHTML = "✏️ Modo edición";
+
+            }
+
+        }
+
+
+        /* AGREGAR FOTO */
+
+        function agregarFoto(boton) {
+
+            const input = document.createElement("input");
+
+            input.type = "file";
+            input.accept = "image/*";
+
+            input.onchange = function(event) {
+
+                const archivo = event.target.files[0];
+
+                if (!archivo) return;
+
+                const lector = new FileReader();
+
+                lector.onload = function(e) {
+
+                    const seccion = boton.closest(".section");
+
+                    let galeria = seccion.querySelector(".photo-container");
+
+
+                    if (!galeria) {
+
+                        galeria = document.createElement("div");
+
+                        galeria.className = "photo-container";
+
+                        seccion.insertBefore(
+                            galeria,
+                            seccion.querySelector(".edit-tools")
+                        );
+
+                    }
+
+
+                    const foto = document.createElement("div");
+
+                    foto.className = "photo-box";
+
+                    foto.innerHTML = `
+
+                        <img src="${e.target.result}" alt="Nueva imagen">
+
+                        <div
+                            class="photo-caption"
+                            contenteditable="${modoEdicion}"
+                        >
+                            Escribe una descripción
+                        </div>
+
+                    `;
+
+
+                    galeria.appendChild(foto);
+
+                };
+
+                lector.readAsDataURL(archivo);
+
+            };
+
+
+            input.click();
+
+        }
+
+
+        /* ELIMINAR SECCIÓN */
+
+        function eliminarSeccion(boton) {
+
+            if (
+                confirm("¿Seguro que quieres eliminar esta sección?")
+            ) {
+
+                boton.closest(".section").remove();
+
+            }
+
+        }
+
+
+        /* AGREGAR NUEVA SECCIÓN */
+
+        function agregarSeccion() {
+
+            const nueva = document.createElement("section");
+
+            nueva.className = "section editable-section editing";
+
+            nueva.innerHTML = `
+
+                <h2 contenteditable="true">
+                    Nueva sección
+                </h2>
+
+                <p contenteditable="true">
+                    Escribe aquí el contenido de tu nueva sección.
+                </p>
+
+                <div class="edit-tools">
+
+                    <button onclick="agregarFoto(this)">
+                        📷 Agregar foto
+                    </button>
+
+                    <button onclick="eliminarSeccion(this)">
+                        🗑️ Eliminar sección
+                    </button>
+
+                </div>
+
+            `;
+
+            document.querySelector("main").appendChild(nueva);
+
+        }
+
+
+        /* GUARDAR */
+
+        function guardarPagina() {
+
+            localStorage.setItem(
+                "paginaPescaArrastre",
+                document.body.innerHTML
+            );
+
+            alert("✅ Cambios guardados en este navegador.");
+
+        }
+
+
+        /* CARGAR */
+
+        window.onload = function() {
+
+            const guardado =
+                localStorage.getItem("paginaPescaArrastre");
+
+            if (guardado) {
+
+                /*
+                 * No cargamos automáticamente el HTML guardado
+                 * para evitar problemas con los scripts.
+                 *
+                 * El contenido actual funciona como plantilla.
+                 */
+
+            }
+
+        };
+
+    </script>
+
 </body>
 </html>
+```
