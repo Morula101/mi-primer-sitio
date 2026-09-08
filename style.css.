@@ -1,14 +1,257 @@
-body {
-font-family: sans-serif;
-text-align: center;
-padding-top: 80px;
-transition: background-color 0.3s;
+/* ======================================
+   NAVEGACIÓN
+====================================== */
+
+function irA(id) {
+
+    const elemento = document.getElementById(id);
+
+    if (elemento) {
+
+        elemento.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
 }
-h1 {
-color: #0e8f7d;
+
+
+/* ======================================
+   INFORMACIÓN EXTRA
+====================================== */
+
+function mostrarInfo() {
+
+    const info =
+        document.getElementById("info-extra");
+
+    info.classList.toggle("active");
+
 }
-button {
-padding: 10px 20px;
-font-size: 16px;
-cursor: pointer;
-}
+
+
+/* ======================================
+   ANIMACIÓN DE SECCIONES
+====================================== */
+
+const elementos =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+
+                function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                    }
+
+                }
+
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+elementos.forEach(
+    elemento => observer.observe(elemento)
+);
+
+
+/* ======================================
+   CONTADORES
+====================================== */
+
+const contadores =
+    document.querySelectorAll(".counter");
+
+
+let contadoresActivados = false;
+
+
+const contadorObserver =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting &&
+                        !contadoresActivados
+                    ) {
+
+                        contadoresActivados = true;
+
+                        contadores.forEach(
+
+                            function(contador) {
+
+                                const objetivo =
+                                    Number(
+                                        contador.dataset.target
+                                    );
+
+                                let numero = 0;
+
+                                const velocidad =
+                                    objetivo / 50;
+
+
+                                const intervalo =
+                                    setInterval(
+
+                                        function() {
+
+                                            numero += velocidad;
+
+                                            if (
+                                                numero >= objetivo
+                                            ) {
+
+                                                numero = objetivo;
+
+                                                clearInterval(
+                                                    intervalo
+                                                );
+
+                                            }
+
+                                            contador.textContent =
+                                                Math.floor(numero);
+
+                                        },
+
+                                        25
+
+                                    );
+
+                            }
+
+                        );
+
+                    }
+
+                }
+
+            );
+
+        }
+
+    );
+
+
+const zonaEstadisticas =
+    document.querySelector(".statistics");
+
+
+contadorObserver.observe(
+    zonaEstadisticas
+);
+
+
+/* ======================================
+   ANIMAR GRÁFICOS
+====================================== */
+
+const grafico =
+    document.querySelector(".chart");
+
+
+let graficoActivado = false;
+
+
+const graficoObserver =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            if (
+                entries[0].isIntersecting &&
+                !graficoActivado
+            ) {
+
+                graficoActivado = true;
+
+                const barras =
+                    document.querySelectorAll(
+                        ".bar-fill"
+                    );
+
+
+                barras.forEach(
+
+                    function(barra) {
+
+                        const ancho =
+                            barra.style.width;
+
+                        barra.style.width = "0";
+
+                        setTimeout(
+                            function() {
+                                barra.style.width = ancho;
+                            },
+                            200
+                        );
+
+                    }
+
+                );
+
+            }
+
+        },
+
+        {
+            threshold: 0.3
+        }
+
+    );
+
+
+graficoObserver.observe(grafico);
+
+
+/* ======================================
+   EFECTO DE PROFUNDIDAD AL SCROLL
+====================================== */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const scroll =
+            window.scrollY;
+
+        const hero =
+            document.querySelector(".hero");
+
+        if (hero) {
+
+            hero.style.backgroundPosition =
+                "center " +
+                (scroll * 0.35) +
+                "px";
+
+        }
+
+    }
+);
