@@ -1,3 +1,7 @@
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,17 +15,21 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #eafaff;
-    background: linear-gradient(
-        180deg,
-        #001a33 0%,
-        #003d5c 30%,
-        #006b82 60%,
-        #003f5c 100%
-    );
+    background:
+        linear-gradient(
+            180deg,
+            #001a33 0%,
+            #003d5c 30%,
+            #006b82 60%,
+            #003f5c 100%
+        );
     overflow-x: hidden;
 }
 
-/* MENU */
+
+/* =========================================================
+   MENÚ
+========================================================= */
 
 .navbar {
     position: fixed;
@@ -29,11 +37,15 @@ body {
     left: 0;
     width: 100%;
     padding: 15px 30px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 20, 40, 0.92);
+
+    background: rgba(0, 20, 40, 0.94);
+
     z-index: 1000;
+
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -50,16 +62,24 @@ body {
 .nav-links {
     display: flex;
     gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .nav-links button {
     border: none;
     background: transparent;
     color: white;
+
     padding: 9px 13px;
+
     border-radius: 20px;
+
     cursor: pointer;
+
     font-size: 14px;
+
+    transition: 0.3s;
 }
 
 .nav-links button:hover {
@@ -67,15 +87,22 @@ body {
     color: #002235;
 }
 
-/* PORTADA */
+
+/* =========================================================
+   PORTADA
+========================================================= */
 
 .hero {
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     text-align: center;
+
     position: relative;
+
     padding: 100px 20px;
 
     background:
@@ -95,16 +122,23 @@ body {
 
 .mini-title {
     color: #6eeaff;
+
     letter-spacing: 5px;
+
     font-size: 14px;
+
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-size: clamp(55px, 10vw, 120px);
+
     line-height: 0.9;
+
     margin-bottom: 30px;
-    text-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+
+    text-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
 .hero h1 span {
@@ -113,43 +147,66 @@ body {
 
 .hero p {
     font-size: 19px;
+
     line-height: 1.8;
+
     margin-bottom: 30px;
 }
 
 .main-button,
 .small-button {
     border: none;
+
     background: #55ddff;
+
     color: #00263c;
+
     padding: 14px 25px;
+
     border-radius: 30px;
+
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 .main-button:hover,
 .small-button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 220, 255, 0.35);
+
+    box-shadow:
+        0 10px 25px rgba(0, 220, 255, 0.35);
 }
 
 .scroll-indicator {
     position: absolute;
+
     bottom: 25px;
+
     font-size: 30px;
 }
 
-/* SECCIONES */
+
+/* =========================================================
+   SECCIONES DE INFORMACIÓN
+========================================================= */
 
 .section {
+    width: 100%;
     max-width: 1200px;
+
     margin: 100px auto;
+
     padding: 40px;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 60px;
+
     align-items: center;
 }
 
@@ -159,8 +216,11 @@ body {
 
 .section-number {
     color: #61e5ff;
+
     font-size: 13px;
+
     font-weight: bold;
+
     letter-spacing: 3px;
 }
 
@@ -168,7 +228,9 @@ body {
 .center-title h2,
 .final-section h2 {
     font-size: clamp(35px, 5vw, 60px);
+
     line-height: 1.1;
+
     margin: 15px 0 25px;
 }
 
@@ -176,91 +238,140 @@ body {
 .center-title p,
 .final-section p {
     color: #c7eaf2;
+
     font-size: 17px;
+
     line-height: 1.8;
+
     margin-bottom: 18px;
 }
 
-/* IMAGENES */
+
+/* =========================================================
+   IMÁGENES
+========================================================= */
 
 .image-container {
+    width: 100%;
+
     border-radius: 25px;
+
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .image-container img {
     width: 100%;
+
     height: 450px;
+
     object-fit: cover;
+
     display: block;
-    transition: transform 0.8s;
+
+    transition: transform 0.8s ease;
 }
 
 .image-container:hover img {
     transform: scale(1.06);
 }
 
-/* INFORMACION EXTRA */
+
+/* =========================================================
+   INFORMACIÓN EXTRA
+========================================================= */
 
 .extra-info {
     max-height: 0;
+
     overflow: hidden;
+
     opacity: 0;
-    transition: 0.5s;
+
+    transition:
+        max-height 0.5s ease,
+        opacity 0.5s ease;
 }
 
 .extra-info.active {
-    max-height: 300px;
+    max-height: 500px;
+
     opacity: 1;
+
     margin-top: 20px;
 }
 
 .fact-box {
     margin-top: 25px;
+
     padding: 20px;
+
     border-left: 4px solid #54ddff;
+
     background: rgba(0, 0, 0, 0.2);
+
     border-radius: 10px;
 }
 
-/* IMPACTO */
+
+/* =========================================================
+   IMPACTO
+========================================================= */
 
 .dark-section {
+    width: 100%;
+
     padding: 120px 7%;
+
     background: rgba(0, 10, 30, 0.55);
 }
 
 .center-title {
     max-width: 800px;
+
     text-align: center;
+
     margin: 0 auto 60px;
 }
 
 .cards {
     max-width: 1200px;
+
     margin: auto;
+
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 20px;
 }
 
 .impact-card {
     padding: 30px;
+
     min-height: 270px;
+
     background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
     border-radius: 25px;
+
     transition: 0.4s;
 }
 
 .impact-card:hover {
     transform: translateY(-10px);
+
     background: rgba(255, 255, 255, 0.13);
 }
 
 .icon {
     font-size: 45px;
+
     margin-bottom: 20px;
 }
 
@@ -270,232 +381,349 @@ body {
 
 .impact-card p {
     color: #bcdfe8;
+
     line-height: 1.7;
 }
 
-/* ESTADISTICAS */
+
+/* =========================================================
+   ESTADÍSTICAS
+========================================================= */
 
 .statistics {
     display: block;
+
+    width: 100%;
 }
 
 .stat-grid {
     max-width: 1100px;
+
     margin: auto;
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 25px;
 }
 
 .stat {
     text-align: center;
+
     padding: 40px 25px;
+
     border-radius: 25px;
+
     background: rgba(0, 0, 0, 0.2);
 }
 
 .stat strong {
     font-size: 70px;
+
     color: #5de4ff;
 }
 
 .stat > span {
     font-size: 35px;
+
     color: #5de4ff;
 }
 
 .stat p {
     color: #c5e4eb;
+
     line-height: 1.6;
+
     margin-top: 15px;
 }
 
-/* GRAFICOS */
+
+/* =========================================================
+   GRÁFICOS
+========================================================= */
 
 .chart-section {
+    width: 100%;
+
     padding: 120px 7%;
+
     background: rgba(0, 0, 0, 0.2);
 }
 
 .chart {
     max-width: 1000px;
+
     margin: auto;
+
     padding: 40px;
+
     background: rgba(255, 255, 255, 0.07);
+
     border-radius: 25px;
 }
 
 .country {
     display: grid;
+
     grid-template-columns: 100px 1fr 60px;
+
     gap: 15px;
+
     align-items: center;
+
     margin: 25px 0;
 }
 
 .bar {
     height: 18px;
+
     background: rgba(255, 255, 255, 0.12);
+
     border-radius: 20px;
+
     overflow: hidden;
 }
 
 .bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, #1ba9d0, #6cecff);
+
+    background:
+        linear-gradient(
+            90deg,
+            #1ba9d0,
+            #6cecff
+        );
+
     border-radius: 20px;
 }
 
-/* GALERIA */
+
+/* =========================================================
+   GALERÍA
+========================================================= */
 
 .gallery-section {
+    width: 100%;
+
     padding: 120px 7%;
 }
 
 .gallery {
     max-width: 1200px;
+
     margin: auto;
+
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 25px;
 }
 
 .gallery-item {
     position: relative;
+
     height: 400px;
+
     overflow: hidden;
+
     border-radius: 25px;
 }
 
 .gallery-item img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     transition: 0.8s;
 }
 
 .gallery-item:hover img {
     transform: scale(1.1);
+
     filter: brightness(0.6);
 }
 
 .gallery-text {
     position: absolute;
+
     bottom: 0;
+
     left: 0;
+
     width: 100%;
+
     padding: 35px;
-    background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.85)
-    );
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.85)
+        );
 }
 
 .gallery-text h3 {
     font-size: 28px;
+
     margin-bottom: 5px;
 }
 
-/* FINAL */
+
+/* =========================================================
+   SECCIÓN FINAL
+========================================================= */
 
 .final-section {
     max-width: 900px;
+
     margin: 120px auto;
+
     padding: 60px;
+
     text-align: center;
+
     background: rgba(0, 100, 150, 0.25);
+
     border-radius: 35px;
 }
 
-/* CREDITOS */
+
+/* =========================================================
+   CRÉDITOS
+========================================================= */
 
 .credits {
     text-align: center;
+
     padding: 100px 20px;
+
     background: rgba(0, 0, 0, 0.3);
 }
 
 .credits h2 {
     font-size: 40px;
+
     margin-bottom: 20px;
 }
 
 .credits p {
     color: #b7dce5;
+
     margin: 10px;
 }
 
-/* FOOTER */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
     padding: 50px;
+
     text-align: center;
+
     background: #00101e;
 }
 
 footer p {
     color: #91bac6;
+
     margin: 15px 0 25px;
 }
 
 footer button {
     border: none;
+
     background: transparent;
+
     color: #5de4ff;
+
     cursor: pointer;
 }
 
-/* ANIMACION AL BAJAR */
 
-/* 
-   Las secciones ahora SIEMPRE son visibles.
-   Esto evita que desaparezcan si el JavaScript
-   de la animación no se ejecuta.
+/* =========================================================
+   APARICIÓN AL HACER SCROLL
+========================================================= */
+
+/*
+   IMPORTANTE:
+   Las secciones NO empiezan invisibles.
+   
+   Esto evita que desaparezca la información
+   si JavaScript no funciona.
 */
 
 .reveal {
     opacity: 1;
+
+    visibility: visible;
+
     transform: translateY(0);
+
     filter: blur(0);
 }
 
-/* Si el JS activa las animaciones,
-   se mantiene el efecto de aparición */
+
+/*
+   La animación se activa solamente cuando
+   JavaScript agrega la clase "js-enabled".
+*/
 
 .js-enabled .reveal {
     opacity: 0;
-    transform: translateY(70px);
+
+    visibility: hidden;
+
+    transform: translateY(60px);
+
     filter: blur(8px);
+
     transition:
         opacity 1s ease,
         transform 1s ease,
-        filter 1s ease;
+        filter 1s ease,
+        visibility 1s ease;
 }
 
 .js-enabled .reveal.visible {
     opacity: 1;
+
+    visibility: visible;
+
     transform: translateY(0);
+
     filter: blur(0);
 }
 
-/* CELULAR */
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
     .navbar {
         flex-direction: column;
+
         gap: 10px;
     }
 
     .nav-links {
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
     .section,
     .section.reverse {
         grid-template-columns: 1fr;
+
         padding: 25px;
+
         margin: 70px auto;
     }
 
@@ -507,6 +735,11 @@ footer button {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -532,6 +765,15 @@ footer button {
 
     .country {
         grid-template-columns: 70px 1fr 45px;
+
         font-size: 12px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .image-container img {
+        height: 320px;
     }
 }
