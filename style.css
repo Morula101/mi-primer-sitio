@@ -447,7 +447,22 @@ footer button {
 
 /* ANIMACION AL BAJAR */
 
+/* 
+   Las secciones ahora SIEMPRE son visibles.
+   Esto evita que desaparezcan si el JavaScript
+   de la animación no se ejecuta.
+*/
+
 .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Si el JS activa las animaciones,
+   se mantiene el efecto de aparición */
+
+.js-enabled .reveal {
     opacity: 0;
     transform: translateY(70px);
     filter: blur(8px);
@@ -457,7 +472,7 @@ footer button {
         filter 1s ease;
 }
 
-.reveal.visible {
+.js-enabled .reveal.visible {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
