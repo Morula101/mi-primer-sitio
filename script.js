@@ -825,3 +825,13 @@ footer button {
     }
 
 }
+
+function mostrarInfo() {
+    const info = document.getElementById("info-extra");
+
+    if (info.classList.contains("active")) {
+        info.classList.remove("active");
+    } else {
+        info.classList.add("active");
+    }
+}
