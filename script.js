@@ -59,6 +59,8 @@ function volverArriba() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    document.documentElement.classList.add("js-enabled");
+
     const elementos = document.querySelectorAll(".reveal");
 
     const observador = new IntersectionObserver(
