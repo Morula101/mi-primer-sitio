@@ -1,854 +1,315 @@
-<!DOCTYPE html>
-<html lang="es">
+/* ======================================
+   OCEANINFO - JAVASCRIPT
+====================================== */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title id="page-title">Pesca de Arrastre | Océanos en Riesgo</title>
 
-    <!-- Fuente -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- FAVICON / LOGO DE LA PESTAÑA -->
-    <link rel="icon" type="image/png" href="favicon.png">
-</head>
-
-<body>
-
-    <!-- ============================= -->
-    <!-- MENÚ -->
-    <!-- ============================= -->
-
-    <nav class="navbar">
-
-        <div class="logo">
-            🌊 OCEAN<span>INFO</span>
-        </div>
+/* ======================================
+   BOTÓN "SABER MÁS"
+====================================== */
 
-        <div class="nav-links">
+function mostrarInfo() {
 
-            <button onclick="irA('inicio')"
-                data-es="Inicio"
-                data-it="Home">
-                Inicio
-            </button>
+    const info = document.getElementById("info-extra");
 
-            <button onclick="irA('informacion')"
-                data-es="Información"
-                data-it="Informazioni">
-                Información
-            </button>
+    if (!info) {
+        return;
+    }
 
-            <button onclick="irA('impacto')"
-                data-es="Impacto"
-                data-it="Impatto">
-                Impacto
-            </button>
+    info.classList.toggle("active");
+}
 
-            <button onclick="irA('datos')"
-                data-es="Datos"
-                data-it="Dati">
-                Datos
-            </button>
 
-            <button onclick="irA('graficos')"
-                data-es="Gráficos"
-                data-it="Grafici">
-                Gráficos
-            </button>
-
-            <button onclick="irA('fotos')"
-                data-es="Fotos"
-                data-it="Foto">
-                Fotos
-            </button>
-
-            <button onclick="irA('creditos')"
-                data-es="Créditos"
-                data-it="Crediti">
-                Créditos
-            </button>
-
-            <!-- BOTÓN DE IDIOMA -->
-            <button class="language-button" onclick="cambiarIdioma()">
-                🇮🇹 Italiano
-            </button>
-
-        </div>
-
-    </nav>
-
-
-    <!-- ============================= -->
-    <!-- HERO -->
-    <!-- ============================= -->
-
-    <header id="inicio" class="hero">
-
-        <div class="hero-content">
+/* ======================================
+   BOTONES DE NAVEGACIÓN
+====================================== */
 
-            <p class="mini-title"
-                data-es="INFORMACIÓN MARINA"
-                data-it="INFORMAZIONI MARINE">
-                INFORMACIÓN MARINA
-            </p>
-
-            <h1>
-                <span data-es="PESCA DE" data-it="PESCA A">PESCA DE</span>
-                <br>
-                <span data-es="ARRASTRE" data-it="STRASCICO">ARRASTRE</span>
-            </h1>
+function irA(seccion) {
 
-            <p
-                data-es="Una mirada al funcionamiento de una de las técnicas de pesca más utilizadas y a sus efectos sobre los ecosistemas marinos."
-                data-it="Uno sguardo al funzionamento di una delle tecniche di pesca più utilizzate e ai suoi effetti sugli ecosistemi marini.">
-                Una mirada al funcionamiento de una de las técnicas
-                de pesca más utilizadas y a sus efectos sobre los
-                ecosistemas marinos.
-            </p>
+    const elemento = document.getElementById(seccion);
 
-            <button class="main-button" onclick="irA('informacion')"
-                data-es="Explorar información ↓"
-                data-it="Esplora le informazioni ↓">
-                Explorar información ↓
-            </button>
+    if (elemento) {
 
-        </div>
+        elemento.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
-        <div class="scroll-indicator">
-            ↓
-        </div>
+    }
 
-    </header>
+}
 
 
-    <main>
+/* ======================================
+   VOLVER ARRIBA
+====================================== */
 
+function volverArriba() {
 
-        <!-- ============================= -->
-        <!-- INTRODUCCIÓN -->
-        <!-- ============================= -->
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-        <section id="informacion" class="section reveal">
+}
 
-            <div class="text">
 
-                <span class="section-number"
-                    data-es="01 — INFORMACIÓN"
-                    data-it="01 — INFORMAZIONI">
-                    01 — INFORMACIÓN
-                </span>
+/* ======================================
+   ANIMACIÓN AL BAJAR
+====================================== */
 
-                <h2
-                    data-es="¿Qué es la pesca de arrastre?"
-                    data-it="Cos'è la pesca a strascico?">
-                    ¿Qué es la pesca de arrastre?
-                </h2>
+document.addEventListener("DOMContentLoaded", function () {
 
-                <p
-                    data-es="La pesca de arrastre consiste en remolcar una red a través del agua para capturar organismos marinos. En el caso del arrastre de fondo, la red entra en contacto con el fondo marino."
-                    data-it="La pesca a strascico consiste nel trainare una rete attraverso l'acqua per catturare organismi marini. Nel caso della pesca a strascico di fondo, la rete entra in contatto con il fondale marino.">
-                    La pesca de arrastre consiste en remolcar una red
-                    a través del agua para capturar organismos marinos.
-                    En el caso del arrastre de fondo, la red entra en
-                    contacto con el fondo marino.
-                </p>
+    document.documentElement.classList.add("js-enabled");
 
-                <p
-                    data-es="Estas redes pueden utilizarse para capturar peces, crustáceos y otros organismos que viven cerca o sobre el fondo del océano."
-                    data-it="Queste reti possono essere utilizzate per catturare pesci, crostacei e altri organismi che vivono vicino o sul fondo dell'oceano.">
-                    Estas redes pueden utilizarse para capturar peces,
-                    crustáceos y otros organismos que viven cerca o sobre
-                    el fondo del océano.
-                </p>
+    const elementos = document.querySelectorAll(".reveal");
 
-                <button class="small-button" onclick="mostrarInfo()"
-                    data-es="+ Saber más"
-                    data-it="+ Scopri di più">
-                    + Saber más
-                </button>
+    const observador = new IntersectionObserver(
 
-                <div id="info-extra" class="extra-info">
+        function (entradas) {
 
-                    <p
-                        data-es="Existen diferentes tipos de arrastre. Algunos trabajan cerca del fondo y otros se realizan a diferentes profundidades."
-                        data-it="Esistono diversi tipi di pesca a strascico. Alcuni operano vicino al fondo, mentre altri vengono praticati a diverse profondità.">
-                        Existen diferentes tipos de arrastre. Algunos
-                        trabajan cerca del fondo y otros se realizan
-                        a diferentes profundidades.
-                    </p>
+            entradas.forEach(function (entrada) {
 
-                </div>
+                if (entrada.isIntersecting) {
 
-            </div>
+                    entrada.target.classList.add("visible");
 
+                    observador.unobserve(entrada.target);
 
-            <div class="image-container">
+                }
 
-                <img
-                    src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80"
-                    alt="Océano"
-                    data-alt-es="Océano"
-                    data-alt-it="Oceano"
-                >
+            });
 
-            </div>
+        },
 
-        </section>
+        {
+            threshold: 0.15
+        }
 
+    );
 
-        <!-- ============================= -->
-        <!-- COMO FUNCIONA -->
-        <!-- ============================= -->
 
-        <section class="section reverse reveal">
+    elementos.forEach(function (elemento) {
 
-            <div class="image-container">
+        observador.observe(elemento);
 
-                <img
-                    src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?auto=format&fit=crop&w=1000&q=80"
-                    alt="Barco pesquero en el océano"
-                    data-alt-es="Barco pesquero en el océano"
-                    data-alt-it="Barca da pesca nell'oceano"
-                >
+    });
 
-            </div>
+});
 
 
-            <div class="text">
+/* ======================================
+   CONTADORES DE ESTADÍSTICAS
+====================================== */
 
-                <span class="section-number"
-                    data-es="02 — MÉTODO"
-                    data-it="02 — METODO">
-                    02 — MÉTODO
-                </span>
+document.addEventListener("DOMContentLoaded", function () {
 
-                <h2
-                    data-es="¿Cómo funciona?"
-                    data-it="Come funziona?">
-                    ¿Cómo funciona?
-                </h2>
+    const contadores = document.querySelectorAll(".counter");
 
-                <p
-                    data-es="Una embarcación remolca una red especialmente diseñada para permanecer abierta mientras avanza."
-                    data-it="Un'imbarcazione traina una rete appositamente progettata per rimanere aperta mentre avanza.">
-                    Una embarcación remolca una red especialmente
-                    diseñada para permanecer abierta mientras avanza.
-                </p>
+    const observadorContadores = new IntersectionObserver(
 
-                <p
-                    data-es="La red puede capturar las especies que se encuentran en su recorrido. Cuando termina el período de arrastre, la red es recogida y la captura es llevada a bordo."
-                    data-it="La rete può catturare le specie che si trovano lungo il suo percorso. Quando termina il periodo di pesca, la rete viene recuperata e il pescato viene portato a bordo.">
-                    La red puede capturar las especies que se encuentran
-                    en su recorrido. Cuando termina el período de arrastre,
-                    la red es recogida y la captura es llevada a bordo.
-                </p>
+        function (entradas) {
 
-                <div class="fact-box">
+            entradas.forEach(function (entrada) {
 
-                    <strong
-                        data-es="🌊 ¿Sabías que?"
-                        data-it="🌊 Lo sapevi che?">
-                        🌊 ¿Sabías que?
-                    </strong>
+                if (entrada.isIntersecting) {
 
-                    <p
-                        data-es="Algunas redes de arrastre pueden recorrer grandes distancias durante una jornada de pesca."
-                        data-it="Alcune reti a strascico possono percorrere grandi distanze durante una giornata di pesca.">
-                        Algunas redes de arrastre pueden recorrer grandes
-                        distancias durante una jornada de pesca.
-                    </p>
+                    const contador = entrada.target;
 
-                </div>
+                    const objetivo = Number(
+                        contador.dataset.target
+                    );
 
-            </div>
+                    let numeroActual = 0;
 
-        </section>
+                    const duracion = 1500;
 
+                    const intervalo = 30;
 
-        <!-- ============================= -->
-        <!-- IMPACTO -->
-        <!-- ============================= -->
+                    const incremento =
+                        objetivo / (duracion / intervalo);
 
-        <section id="impacto" class="dark-section reveal">
 
-            <div class="center-title">
+                    const animacion = setInterval(function () {
 
-                <span class="section-number"
-                    data-es="03 — ECOSISTEMA"
-                    data-it="03 — ECOSISTEMA">
-                    03 — ECOSISTEMA
-                </span>
+                        numeroActual += incremento;
 
-                <h2
-                    data-es="Impacto sobre el océano"
-                    data-it="Impatto sull'oceano">
-                    Impacto sobre el océano
-                </h2>
+                        if (numeroActual >= objetivo) {
 
-                <p
-                    data-es="El efecto de la pesca de arrastre depende del tipo de arte utilizado, el lugar, la frecuencia de pesca y las medidas de manejo existentes."
-                    data-it="L'effetto della pesca a strascico dipende dal tipo di attrezzatura utilizzata, dal luogo, dalla frequenza della pesca e dalle misure di gestione esistenti.">
-                    El efecto de la pesca de arrastre depende del tipo
-                    de arte utilizado, el lugar, la frecuencia de pesca
-                    y las medidas de manejo existentes.
-                </p>
+                            numeroActual = objetivo;
 
-            </div>
+                            clearInterval(animacion);
 
+                        }
 
-            <div class="cards">
+                        contador.textContent =
+                            Math.floor(numeroActual);
 
-                <article class="impact-card">
+                    }, intervalo);
 
-                    <div class="icon">🐠</div>
 
-                    <h3
-                        data-es="Captura incidental"
-                        data-it="Cattura accidentale">
-                        Captura incidental
-                    </h3>
+                    observadorContadores.unobserve(contador);
 
-                    <p
-                        data-es="Pueden capturarse especies que no eran el objetivo principal de la actividad pesquera."
-                        data-it="Possono essere catturate specie che non erano l'obiettivo principale dell'attività di pesca.">
-                        Pueden capturarse especies que no eran el objetivo
-                        principal de la actividad pesquera.
-                    </p>
+                }
 
-                </article>
+            });
 
+        },
 
-                <article class="impact-card">
+        {
+            threshold: 0.5
+        }
 
-                    <div class="icon">🪸</div>
+    );
 
-                    <h3
-                        data-es="Fondo marino"
-                        data-it="Fondale marino">
-                        Fondo marino
-                    </h3>
 
-                    <p
-                        data-es="El contacto con el fondo puede alterar hábitats y comunidades que viven sobre o dentro del sedimento."
-                        data-it="Il contatto con il fondale può alterare gli habitat e le comunità che vivono sopra o all'interno dei sedimenti.">
-                        El contacto con el fondo puede alterar hábitats
-                        y comunidades que viven sobre o dentro del sedimento.
-                    </p>
+    contadores.forEach(function (contador) {
 
-                </article>
+        observadorContadores.observe(contador);
 
+    });
 
-                <article class="impact-card">
+});
 
-                    <div class="icon">🐢</div>
 
-                    <h3
-                        data-es="Fauna marina"
-                        data-it="Fauna marina">
-                        Fauna marina
-                    </h3>
+/* ======================================
+   SISTEMA DE IDIOMAS
+   ESPAÑOL / ITALIANO
+====================================== */
 
-                    <p
-                        data-es="Algunas especies, como tortugas y mamíferos marinos, pueden estar expuestas a captura accidental."
-                        data-it="Alcune specie, come tartarughe e mammiferi marini, possono essere esposte a catture accidentali.">
-                        Algunas especies, como tortugas y mamíferos marinos,
-                        pueden estar expuestas a captura accidental.
-                    </p>
+let idiomaActual = "es";
 
-                </article>
 
+function cambiarIdioma() {
 
-                <article class="impact-card">
+    const elementos =
+        document.querySelectorAll(
+            "[data-es][data-it]"
+        );
 
-                    <div class="icon">🌱</div>
 
-                    <h3
-                        data-es="Recuperación"
-                        data-it="Recupero">
-                        Recuperación
-                    </h3>
+    /* ==============================
+       ESPAÑOL → ITALIANO
+    ============================== */
 
-                    <p
-                        data-es="La capacidad de recuperación de los ecosistemas depende del tipo de hábitat y de la intensidad de la perturbación."
-                        data-it="La capacità di recupero degli ecosistemi dipende dal tipo di habitat e dall'intensità del disturbo.">
-                        La capacidad de recuperación de los ecosistemas
-                        depende del tipo de hábitat y de la intensidad
-                        de la perturbación.
-                    </p>
+    if (idiomaActual === "es") {
 
-                </article>
+        elementos.forEach(function (elemento) {
 
-            </div>
+            elemento.textContent =
+                elemento.dataset.it;
 
-        </section>
+        });
 
 
-        <!-- ============================= -->
-        <!-- ESTADÍSTICAS -->
-        <!-- ============================= -->
+        /* Cambiar ALT de imágenes */
 
-        <section id="datos" class="section statistics reveal">
+        const imagenes =
+            document.querySelectorAll(
+                "[data-alt-es][data-alt-it]"
+            );
 
-            <div class="center-title">
 
-                <span class="section-number"
-                    data-es="04 — DATOS"
-                    data-it="04 — DATI">
-                    04 — DATOS
-                </span>
+        imagenes.forEach(function (imagen) {
 
-                <h2
-                    data-es="La pesca de arrastre en números"
-                    data-it="La pesca a strascico in numeri">
-                    La pesca de arrastre en números
-                </h2>
+            imagen.alt =
+                imagen.dataset.altIt;
 
-                <p
-                    data-es="Algunas cifras permiten dimensionar la importancia de esta actividad dentro de la pesca mundial."
-                    data-it="Alcuni dati permettono di comprendere l'importanza di questa attività all'interno della pesca mondiale.">
-                    Algunas cifras permiten dimensionar la importancia
-                    de esta actividad dentro de la pesca mundial.
-                </p>
+        });
 
-            </div>
 
+        /* Cambiar título de la pestaña */
 
-            <div class="stat-grid">
+        document.title =
+            "Pesca a Strascico | Oceani a Rischio";
 
-                <div class="stat">
 
-                    <strong class="counter" data-target="25">
-                        0
-                    </strong>
+        /* Cambiar idioma del HTML */
 
-                    <span>%</span>
+        document.documentElement.lang =
+            "it";
 
-                    <p
-                        data-es="Aproximadamente una cuarta parte de los desembarques pesqueros marinos mundiales está asociada al arrastre."
-                        data-it="Circa un quarto degli sbarchi della pesca marina mondiale è associato alla pesca a strascico.">
-                        Aproximadamente una cuarta parte de los
-                        desembarques pesqueros marinos mundiales
-                        está asociada al arrastre.
-                    </p>
 
-                </div>
+        /* Cambiar texto del botón */
 
+        const botonIdioma =
+            document.querySelector(
+                ".language-button"
+            );
 
-                <div class="stat">
 
-                    <strong class="counter" data-target="13">
-                        0
-                    </strong>
+        if (botonIdioma) {
 
-                    <span>+</span>
+            botonIdioma.textContent =
+                "🇪🇸 Español";
 
-                    <p
-                        data-es="Países concentran una gran parte de los desembarques estimados de arrastre de fondo en determinados análisis históricos."
-                        data-it="Paesi concentrano una grande parte degli sbarchi stimati della pesca a strascico di fondo in determinate analisi storiche.">
-                        Países concentran una gran parte de los
-                        desembarques estimados de arrastre de fondo
-                        en determinados análisis históricos.
-                    </p>
+        }
 
-                </div>
 
+        idiomaActual = "it";
 
-                <div class="stat">
+    }
 
-                    <strong class="counter" data-target="80">
-                        0
-                    </strong>
 
-                    <span>%</span>
+    /* ==============================
+       ITALIANO → ESPAÑOL
+    ============================== */
 
-                    <p
-                        data-es="De los desembarques mundiales estimados de arrastre de fondo fueron concentrados por 19 pesquerías de 13 países en un análisis de FAO."
-                        data-it="Degli sbarchi mondiali stimati della pesca a strascico di fondo erano concentrati in 19 attività di pesca di 13 paesi in un'analisi della FAO.">
-                        De los desembarques mundiales estimados de
-                        arrastre de fondo fueron concentrados por
-                        19 pesquerías de 13 países en un análisis de FAO.
-                    </p>
+    else {
 
-                </div>
+        elementos.forEach(function (elemento) {
 
-            </div>
+            elemento.textContent =
+                elemento.dataset.es;
 
-        </section>
+        });
 
 
-        <!-- ============================= -->
-        <!-- GRÁFICO -->
-        <!-- ============================= -->
+        /* Volver ALT al español */
 
-        <section id="graficos" class="chart-section reveal">
+        const imagenes =
+            document.querySelectorAll(
+                "[data-alt-es][data-alt-it]"
+            );
 
-            <div class="center-title">
 
-                <span class="section-number"
-                    data-es="05 — GRÁFICOS"
-                    data-it="05 — GRAFICI">
-                    05 — GRÁFICOS
-                </span>
+        imagenes.forEach(function (imagen) {
 
-                <h2
-                    data-es="Comparación entre países"
-                    data-it="Confronto tra paesi">
-                    Comparación entre países
-                </h2>
+            imagen.alt =
+                imagen.dataset.altEs;
 
-                <p
-                    data-es="Ejemplo visual para comparar el peso relativo del arrastre de fondo en las capturas. Los valores del gráfico son ilustrativos y pueden reemplazarse por datos de una fuente específica."
-                    data-it="Esempio visivo per confrontare il peso relativo della pesca a strascico di fondo nelle catture. I valori del grafico sono illustrativi e possono essere sostituiti con dati provenienti da una fonte specifica.">
-                    Ejemplo visual para comparar el peso relativo del
-                    arrastre de fondo en las capturas. Los valores del
-                    gráfico son ilustrativos y pueden reemplazarse por
-                    datos de una fuente específica.
-                </p>
+        });
 
-            </div>
 
+        /* Volver título de la pestaña */
 
-            <div class="chart">
+        document.title =
+            "Pesca de Arrastre | Océanos en Riesgo";
 
-                <div class="bar-container">
 
-                    <div class="country">
+        /* Volver idioma HTML */
 
-                        <span>China</span>
+        document.documentElement.lang =
+            "es";
 
-                        <div class="bar">
-                            <div class="bar-fill" style="width: 14.9%"></div>
-                        </div>
 
-                        <strong>14.9%</strong>
+        /* Volver botón a italiano */
 
-                    </div>
+        const botonIdioma =
+            document.querySelector(
+                ".language-button"
+            );
 
 
-                    <div class="country">
+        if (botonIdioma) {
 
-                        <span>Vietnam</span>
+            botonIdioma.textContent =
+                "🇮🇹 Italiano";
 
-                        <div class="bar">
-                            <div class="bar-fill" style="width: 8.3%"></div>
-                        </div>
+        }
 
-                        <strong>8.3%</strong>
 
-                    </div>
+        idiomaActual = "es";
 
+    }
 
-                    <div class="country">
-
-                        <span>Indonesia</span>
-
-                        <div class="bar">
-                            <div class="bar-fill" style="width: 8.1%"></div>
-                        </div>
-
-                        <strong>8.1%</strong>
-
-                    </div>
-
-
-                    <div class="country">
-
-                        <span>India</span>
-
-                        <div class="bar">
-                            <div class="bar-fill" style="width: 6.8%"></div>
-                        </div>
-
-                        <strong>6.8%</strong>
-
-                    </div>
-
-
-                    <div class="country">
-
-                        <span
-                            data-es="Marruecos"
-                            data-it="Marocco">
-                            Marruecos
-                        </span>
-
-                        <div class="bar">
-                            <div class="bar-fill" style="width: 6.5%"></div>
-                        </div>
-
-                        <strong>6.5%</strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================= -->
-        <!-- FOTOS -->
-        <!-- ============================= -->
-
-        <section id="fotos" class="gallery-section reveal">
-
-            <div class="center-title">
-
-                <span class="section-number"
-                    data-es="06 — GALERÍA"
-                    data-it="06 — GALLERIA">
-                    06 — GALERÍA
-                </span>
-
-                <h2
-                    data-es="Los ecosistemas marinos"
-                    data-it="Gli ecosistemi marini">
-                    Los ecosistemas marinos
-                </h2>
-
-                <p
-                    data-es="El océano contiene una enorme variedad de ambientes y especies."
-                    data-it="L'oceano contiene un'enorme varietà di ambienti e specie.">
-                    El océano contiene una enorme variedad de ambientes
-                    y especies.
-                </p>
-
-            </div>
-
-
-            <div class="gallery">
-
-                <div class="gallery-item">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=1000&q=80"
-                        alt="Arrecife de coral"
-                        data-alt-es="Arrecife de coral"
-                        data-alt-it="Barriera corallina"
-                    >
-
-                    <div class="gallery-text">
-
-                        <h3
-                            data-es="Arrecifes"
-                            data-it="Barriere coralline">
-                            Arrecifes
-                        </h3>
-
-                        <p
-                            data-es="Hábitats de gran biodiversidad."
-                            data-it="Habitat di grande biodiversità.">
-                            Hábitats de gran biodiversidad.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="gallery-item">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=1000&q=80"
-                        alt="Vida marina"
-                        data-alt-es="Vida marina"
-                        data-alt-it="Vita marina"
-                    >
-
-                    <div class="gallery-text">
-
-                        <h3
-                            data-es="Vida marina"
-                            data-it="Vita marina">
-                            Vida marina
-                        </h3>
-
-                        <p
-                            data-es="Animales que dependen del ecosistema oceánico."
-                            data-it="Animali che dipendono dall'ecosistema oceanico.">
-                            Animales que dependen del ecosistema oceánico.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="gallery-item">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1000&q=80"
-                        alt="Océano"
-                        data-alt-es="Océano"
-                        data-alt-it="Oceano"
-                    >
-
-                    <div class="gallery-text">
-
-                        <h3
-                            data-es="Océano abierto"
-                            data-it="Oceano aperto">
-                            Océano abierto
-                        </h3>
-
-                        <p
-                            data-es="Un ecosistema que conecta diferentes regiones."
-                            data-it="Un ecosistema che collega diverse regioni.">
-                            Un ecosistema que conecta diferentes regiones.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="gallery-item">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=1000&q=80"
-                        alt="Fauna marina"
-                        data-alt-es="Fauna marina"
-                        data-alt-it="Fauna marina"
-                    >
-
-                    <div class="gallery-text">
-
-                        <h3
-                            data-es="Fauna marina"
-                            data-it="Fauna marina">
-                            Fauna marina
-                        </h3>
-
-                        <p
-                            data-es="Una gran variedad de especies habita nuestros mares."
-                            data-it="Una grande varietà di specie abita i nostri mari.">
-                            Una gran variedad de especies habita nuestros mares.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================= -->
-        <!-- CONCLUSIÓN -->
-        <!-- ============================= -->
-
-        <section class="final-section reveal">
-
-            <div>
-
-                <span class="section-number"
-                    data-es="07 — REFLEXIÓN"
-                    data-it="07 — RIFLESSIONE">
-                    07 — REFLEXIÓN
-                </span>
-
-                <h2
-                    data-es="Un océano que debemos comprender"
-                    data-it="Un oceano che dobbiamo comprendere">
-                    Un océano que debemos comprender
-                </h2>
-
-                <p
-                    data-es="La pesca de arrastre forma parte de importantes actividades pesqueras, pero sus efectos ambientales pueden variar considerablemente según cómo, dónde y cuánto se practique."
-                    data-it="La pesca a strascico fa parte di importanti attività di pesca, ma i suoi effetti ambientali possono variare considerevolmente a seconda di come, dove e quanto viene praticata.">
-                    La pesca de arrastre forma parte de importantes
-                    actividades pesqueras, pero sus efectos ambientales
-                    pueden variar considerablemente según cómo, dónde
-                    y cuánto se practique.
-                </p>
-
-                <p
-                    data-es="Conocer sus beneficios, impactos y formas de manejo permite comprender mejor los desafíos relacionados con el futuro de los océanos."
-                    data-it="Conoscere i suoi benefici, impatti e modalità di gestione permette di comprendere meglio le sfide legate al futuro degli oceani.">
-                    Conocer sus beneficios, impactos y formas de manejo
-                    permite comprender mejor los desafíos relacionados
-                    con el futuro de los océanos.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- ============================= -->
-        <!-- CRÉDITOS -->
-        <!-- ============================= -->
-
-        <section id="creditos" class="credits reveal">
-
-            <h2
-                data-es="Créditos"
-                data-it="Crediti">
-                Créditos
-            </h2>
-
-            <p
-                data-es="Página educativa sobre pesca de arrastre."
-                data-it="Pagina educativa sulla pesca a strascico.">
-                Página educativa sobre pesca de arrastre.
-            </p>
-
-            <p
-                data-es="Información de referencia: NOAA Fisheries, FAO y Environmental Performance Index / Yale."
-                data-it="Informazioni di riferimento: NOAA Fisheries, FAO e Environmental Performance Index / Yale.">
-                Información de referencia: NOAA Fisheries, FAO y
-                Environmental Performance Index / Yale.
-            </p>
-
-            <p
-                data-es="Diseño y desarrollo: Tu nombre"
-                data-it="Progettazione e sviluppo: Il tuo nome">
-                Diseño y desarrollo: Tu nombre
-            </p>
-
-        </section>
-
-    </main>
-
-
-    <!-- ============================= -->
-    <!-- FOOTER -->
-    <!-- ============================= -->
-
-    <footer>
-
-        <div class="logo">
-            🌊 OCEAN<span>INFO</span>
-        </div>
-
-        <p
-            data-es="Información educativa sobre nuestros océanos."
-            data-it="Informazioni educative sui nostri oceani.">
-            Información educativa sobre nuestros océanos.
-        </p>
-
-        <button onclick="irA('inicio')"
-            data-es="↑ Volver arriba"
-            data-it="↑ Torna su">
-            ↑ Volver arriba
-        </button>
-
-    </footer>
-
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-
-</body>
-
-</html>
+}
