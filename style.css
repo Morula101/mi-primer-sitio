@@ -777,3 +777,38 @@ footer button {
         height: 320px;
     }
 }
+/* ======================================
+   BOTÓN DE IDIOMA
+====================================== */
+
+.language-button {
+    border: 1px solid rgba(84, 221, 255, 0.5) !important;
+
+    background: rgba(84, 221, 255, 0.08) !important;
+
+    color: #5de4ff !important;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.language-button:hover {
+    background: #36c9df !important;
+
+    color: #002235 !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 220, 255, 0.25);
+}
